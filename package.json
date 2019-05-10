@@ -20,9 +20,12 @@
   "homepage": "https://github.com/avanwor/CCTakeHomeTestFrontEnd#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "jquery": "^3.4.1",
     "nodemon": "^1.19.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",

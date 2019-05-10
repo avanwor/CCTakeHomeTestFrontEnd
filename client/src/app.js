@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import { objectExpression } from '@babel/types';
+import SimpleSlider from './carousel';
 
 class App extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class App extends Component {
 
     componentDidMount() {
         this.getSwapiFilms();
-        this.getSwapiPeople();
+        //this.getSwapiPeople();
     }
 
     //would it be better to make 
@@ -26,6 +27,7 @@ class App extends Component {
             })
     }
 
+    //when using swapi, obtaining all characters up front will lead faster user interations.
     getSwapiPeople(){
         //consider using the id at end of url to store as object
         //check if api returns results sorted by that ID
@@ -60,7 +62,7 @@ class App extends Component {
     }
 
     render() {
-        return <div>hello from app.js</div>
+        return <div><SimpleSlider films={this.state.films} people={this.state.people}/></div>
     }
 };
 
