@@ -16,7 +16,6 @@ class App extends Component {
         //this.getSwapiPeople();
     }
 
-    //would it be better to make 
     getSwapiFilms(){
         fetch('https://swapi.co/api/films/')
             .then(res => res.json())
@@ -37,9 +36,7 @@ class App extends Component {
             fetch(`https://swapi.co/api/people/${page}`)
             .then(res => res.json())
             .then((result) => {
-    
                 allPeople = allPeople.concat(result.results)
-
                 if (result.next) {
                     let pageNumber = result.next.slice(-1);
                     let pageQuery = `?page=${pageNumber}`
@@ -58,13 +55,16 @@ class App extends Component {
         }
 
         recursePages();
+    }
+
+    onFilmClick(film) {
+        console.log('onFilmClick', film.target);
         
     }
 
     render() {
-        return <div><SimpleSlider films={this.state.films} people={this.state.people}/></div>
+        return <div><SimpleSlider films={this.state.films} people={this.state.people} onClick={this.onFilmClick.bind(this)}/></div>
     }
 };
-
 
 export default App;
