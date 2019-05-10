@@ -13,7 +13,9 @@ class App extends Component {
 
     componentDidMount() {
         this.getSwapiFilms();
-        //this.getSwapiPeople();
+        this.getSwapiPeople();
+        //create get species
+        
     }
 
     getSwapiFilms(){
@@ -26,10 +28,9 @@ class App extends Component {
             })
     }
 
-    //when using swapi, obtaining all characters up front will lead faster user interations.
+    //when using swapi, obtaining all characters prior to user click will provide faster results to user
     getSwapiPeople(){
         //consider using the id at end of url to store as object
-        //check if api returns results sorted by that ID
         let allPeople = []
 
         let recursePages = (page = '') => {
@@ -45,6 +46,7 @@ class App extends Component {
                     return allPeople;
                 }
             })
+            .then((result) => this.fixApiErrors(result) )
             .then((result) => {
                 this.setState({
                     people: result
@@ -55,6 +57,18 @@ class App extends Component {
         }
 
         recursePages();
+    }
+
+    fixApiErrors(apiResponse) {
+        if (apiResponse){
+            //known API issue with people #17 - https://github.com/phalt/swapi/issues/99
+            apiResponse.splice(16,0,null) 
+            //Padmé Amidala, people #35, appears out of order in position 87
+            apiResponse.splice(34,0,apiResponse.splice(87,1)[0]);
+            //Ratts Tyerell, people #47, appears out of order in position 72
+            apiResponse.splice(46,0,apiResponse.splice(73,1)[0]);
+        } 
+        return apiResponse;
     }
 
     onFilmClick(film) {
