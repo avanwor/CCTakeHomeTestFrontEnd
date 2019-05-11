@@ -4,7 +4,7 @@ const Item = (props) => {
 
     if (props.film) {
         return (
-            <div onClick={() => props.onClick(props.film)}>
+            <div onClick={() => props.onClick(props.film)} >
                 <h3>{props.film.title}</h3>
             </div>
         )

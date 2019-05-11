@@ -1,0 +1,23 @@
+body {
+    /* background-image: url("https://s3-us-west-2.amazonaws.com/swapichallenge/starwarsBackground.jpg"); */
+    background: #808080;
+}
+
+.slick-current {
+    transform: scale(1.5);
+
+}
+
+.slick-slide {
+    text-align: center;
+    background-color: green;
+    border-color: red;
+    border-style: solid;
+    /* border-width: 5px; */
+
+}
+
+.slick-track {
+    padding-top:75px;
+    /* width: 500px; */
+}

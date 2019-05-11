@@ -12,24 +12,16 @@ class SimpleSlider extends Component {
     }
 
     onFilmClick(film) {
-        console.log('onFilmClick', film.characters);
-
         let characterNumbers = [];
         let charactersByFilm = [];
 
         film.characters.forEach(e => characterNumbers.push(e.split("/").slice(-2,-1)[0]))
-
-        console.log('characterNumbers',characterNumbers)
-        console.log('props people 0',this.props.people[0])
-        console.log('props people 86',this.props.people[86])
-
         characterNumbers.forEach(e => charactersByFilm.push(this.props.people[Number(e)-1]))
 
         this.setState({
             showCharacters: true,
             charactersByFilm: charactersByFilm
-        }, () => console.log(this.state.charactersByFilm))
-        
+        })
     }
 
     onBackClick() {
@@ -54,9 +46,9 @@ class SimpleSlider extends Component {
         //this case will load if films have loaded into App state, and the user has not clicked on a film
         if (this.state.charactersByFilm.length === 0) {
             return (
-                <div style={{padding:200}}>
+                <div style={{padding:100}}>
                 <Slider {...settings}>
-                    {this.props.films.map(film => <Item key={film.title} film={film} onClick={this.onFilmClick.bind(this)} />)}
+                    {this.props.films.map(film => ( <div><Item key={film.title} film={film} onClick={this.onFilmClick.bind(this)}/> </div>))}
                 </Slider>
                 </div>
             );
@@ -68,7 +60,7 @@ class SimpleSlider extends Component {
                 {/* create onclick function for back button */}
                 <h3 onClick={() => this.onBackClick()}>back button</h3>
                 <Slider {...settings}>
-                    {this.state.charactersByFilm.map(person => <Item key={person.name} person={person} />)}
+                    {this.state.charactersByFilm.map(person => ( <div><Item key={person.name} person={person} /> </div>))}
                 </Slider>
                 </div>
             );

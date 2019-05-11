@@ -14,9 +14,9 @@ class App extends Component {
     //when using swapi, obtaining all characters prior to user click will provide faster results to user
     componentDidMount() {
         this.getSwapi('films');
-        this.getSwapi('people');
-        this.getSwapi('species');
-        //species needs to be sorted as well, first 31 are +5, last 6 are in a decreasing order
+        //this.getSwapi('people');
+        //this.getSwapi('species');
+        //API returns some out of order, first 31 are +5, last 6 are in a decreasing order
     }
     
     getSwapi(resource){
