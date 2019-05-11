@@ -19,11 +19,13 @@ class SimpleSlider extends Component {
         characterNumbers.forEach(e => charactersByFilm.push(this.props.people[Number(e)-1]))
         //assign a speciesName prop to each character based on species number from url property
         charactersByFilm.forEach(e => {
-            //console.log(e.species[0].split("/").slice(-2,-1)[0])
-            let speciesNumber = e.species[0].split("/").slice(-2,-1)[0]
-            //console.log(speciesNumber)
-            e['speciesName'] = this.props.species[speciesNumber-1].name
             console.log(e)
+            let speciesNumber = 0
+            if (e.species.length > 0) {
+                speciesNumber = e.species[0].split("/").slice(-2,-1)[0]
+            }
+            //console.log(speciesNumber)
+            e['speciesName'] = this.props.species[speciesNumber].name
         })
         //characterByFilm is an array of objects
         //for each of the elemets, could add a new property of the speciesName?
@@ -69,7 +71,7 @@ class SimpleSlider extends Component {
             return (
                 <div style={{margin:100}}>
                 {/* create onclick function for back button */}
-                <h3 onClick={() => this.onBackClick()}>back button</h3>
+                <button onClick={() => this.onBackClick()}> back to films </button>
                 <Slider {...settings}>
                     {this.state.charactersByFilm.map(person => ( <div><Item key={person.name} person={person} /> </div>))}
                 </Slider>

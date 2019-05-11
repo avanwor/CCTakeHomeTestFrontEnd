@@ -16,6 +16,7 @@ const fixSpeciesErrors = (apiResponse) => {
         apiResponse.splice(1,0,apiResponse.splice(35,1)[0]);
         apiResponse.splice(2,0,apiResponse.splice(35,1)[0]);
         apiResponse.splice(3,0,apiResponse.splice(36,1)[0]);
+        apiResponse.unshift({name:'unknown'});
     } 
     return apiResponse;
 }
