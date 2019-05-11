@@ -6,6 +6,8 @@ const Item = (props) => {
         return (
             <div onClick={() => props.onClick(props.film)} >
                 <h3>{props.film.title}</h3>
+                <br></br>
+                <br></br>
             </div>
         )
     } else {
