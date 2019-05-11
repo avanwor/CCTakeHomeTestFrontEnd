@@ -8,8 +8,11 @@
 
 #Development
 
-### Bundle with Webpack
-1. Run `npm run build`
+### Bundle with Webpack Production
+Run `npm run pack`
 
-### start a server with nodemon
-1. Run `npm start`
+### Start a server with nodemon
+Run `npm start`
+
+### Perform unit tests
+Run `npm run test`
