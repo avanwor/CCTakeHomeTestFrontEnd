@@ -4,8 +4,9 @@
   "description": "React SPA with two carousels displaying third party API data",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "build": "webpack -d --watch",
+    "pack": "webpack -p",
     "start": "nodemon server/server.js"
   },
   "repository": {
@@ -19,7 +20,9 @@
   },
   "homepage": "https://github.com/avanwor/CCTakeHomeTestFrontEnd#readme",
   "dependencies": {
+    "es6-promise": "^4.2.6",
     "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.4.1",
     "nodemon": "^1.19.0",
     "react": "^16.8.6",
