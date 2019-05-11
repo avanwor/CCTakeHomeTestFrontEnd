@@ -9,30 +9,28 @@ class App extends Component {
             people: [],
             species: []
         }
-    }
-
+    };
     //when using swapi, obtaining all characters prior to user click will provide faster results to user
     componentDidMount() {
         this.getSwapi('films');
         this.getSwapi('people');
         this.getSwapi('species');
-        //API returns some out of order, first 31 are +5, last 6 are in a decreasing order
-    }
+    };
     
     getSwapi(resource){
         let recursePages = (allItems,list,page = '') => {
-            let items = []
+            let items = [];
             if (allItems.length > 0) {
                 items = allItems
-            } 
+            }; 
             fetch(`https://swapi.co/api/${list}/${page}`)
             .then(res => res.json())
             .then((result) => {
-                items = items.concat(result.results)
+                items = items.concat(result.results);
                 if (result.next) {
                     let pageNumber = result.next.slice(-1);
-                    let pageQuery = `?page=${pageNumber}`
-                    recursePages(items,list,pageQuery)
+                    let pageQuery = `?page=${pageNumber}`;
+                    recursePages(items,list,pageQuery);
                 } else {
                     return items;
                 }
@@ -49,16 +47,16 @@ class App extends Component {
             .then((result) => {
                 this.setState({
                     [list]: result
-                })
+                });
                 return;
-            })
-        }
+            });
+        };
         recursePages([],resource);
-    }
+    };
 
     render() {
         return <div><SimpleSlider films={this.state.films} people={this.state.people} species={this.state.species} /></div>
-    }
+    };
 };
 
 export default App;

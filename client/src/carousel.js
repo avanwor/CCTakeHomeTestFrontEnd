@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Item from "./itemCarousel"
+import Item from "./itemCarousel";
 class SimpleSlider extends Component {
     constructor(props) {
         super(props)
@@ -8,39 +8,38 @@ class SimpleSlider extends Component {
             showCharacters: false,
             charactersByFilm: [],
         }
-    }
+    };
 
     onFilmClick(film) {
         let characterNumbers = [];
         let charactersByFilm = [];
         //grab the character number from url property
-        film.characters.forEach(e => characterNumbers.push(e.split("/").slice(-2,-1)[0]))
+        film.characters.forEach(e => characterNumbers.push(e.split("/").slice(-2,-1)[0]));
         //grab the character name from sorted people list passed down in props
-        characterNumbers.forEach(e => charactersByFilm.push(this.props.people[Number(e)-1]))
+        characterNumbers.forEach(e => charactersByFilm.push(this.props.people[Number(e)-1]));
         //assign a speciesName prop to each character based on species number from url property
         charactersByFilm.forEach(e => {
-            let speciesNumber = 0
+            let speciesNumber = 0;
             if (e.species.length > 0) {
-                speciesNumber = e.species[0].split("/").slice(-2,-1)[0]
+                speciesNumber = e.species[0].split("/").slice(-2,-1)[0];
             }
-            e['speciesName'] = this.props.species[speciesNumber].name
+            e['speciesName'] = this.props.species[speciesNumber].name;
         })
 
         this.setState({
             showCharacters: true,
             charactersByFilm: charactersByFilm
-        })
-    }
+        });
+    };
 
     onBackClick() {
         this.setState({
             showCharacters: false,
             charactersByFilm: []
-        })
-    }
+        });
+    };
 
     render() {
-        
         let settings = {
             //className: "center",
             centerMode: true,
@@ -48,7 +47,6 @@ class SimpleSlider extends Component {
             slidesToShow: 3,
             speed: 500
         };
-
         //this case will load if films have loaded into App state, and the user has not clicked on a film
         if (this.state.charactersByFilm.length === 0) {
             return (
@@ -58,12 +56,11 @@ class SimpleSlider extends Component {
                 </Slider>
                 </div>
             );
-            
         //this case will load if people have loaded into App state, and the user has clicked on a film
         } else if (this.state.charactersByFilm.length > 0) {
             return (
                 <div style={{margin:100}}>
-                <button onClick={() => this.onBackClick()}> back to films </button>
+                <button onClick={() => this.onBackClick()} style={{cursor:'pointer'}}> back to films </button>
                 <Slider {...settings}>
                     {this.state.charactersByFilm.map(person => <Item key={person.name} person={person} /> )}
                 </Slider>
