@@ -10,6 +10,15 @@ const fixPeopleErrors = (apiResponse) => {
     return apiResponse;
 }
 
-//implement fix for species
+const fixSpeciesErrors = (apiResponse) => {
+    if (apiResponse){
+        apiResponse.splice(0,0,apiResponse.splice(35,1)[0]);
+        apiResponse.splice(1,0,apiResponse.splice(35,1)[0]);
+        apiResponse.splice(2,0,apiResponse.splice(35,1)[0]);
+        apiResponse.splice(3,0,apiResponse.splice(36,1)[0]);
+    } 
+    return apiResponse;
+}
 
-export default fixPeopleErrors;
+
+export {fixPeopleErrors, fixSpeciesErrors};

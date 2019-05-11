@@ -12,6 +12,7 @@ const Item = (props) => {
         return (
             <div >
                 <h3>{props.person.name}</h3>
+                <h3>{props.person.speciesName}</h3>
             </div>
         )
     }
