@@ -33,7 +33,6 @@ class SimpleSlider extends Component {
     }
 
     onBackClick() {
-        console.log('onBackClick');
         this.setState({
             showCharacters: false,
             charactersByFilm: []
@@ -55,7 +54,7 @@ class SimpleSlider extends Component {
             return (
                 <div style={{margin:100}}>
                 <Slider {...settings}>
-                    {this.props.films.map(film => ( <div><Item key={film.title} film={film} onClick={this.onFilmClick.bind(this)}/> </div>))}
+                    {this.props.films.map(film => <Item key={film.title} film={film} onClick={this.onFilmClick.bind(this)}/> )}
                 </Slider>
                 </div>
             );
@@ -66,7 +65,7 @@ class SimpleSlider extends Component {
                 <div style={{margin:100}}>
                 <button onClick={() => this.onBackClick()}> back to films </button>
                 <Slider {...settings}>
-                    {this.state.charactersByFilm.map(person => ( <div><Item key={person.name} person={person} /> </div>))}
+                    {this.state.charactersByFilm.map(person => <Item key={person.name} person={person} /> )}
                 </Slider>
                 </div>
             );

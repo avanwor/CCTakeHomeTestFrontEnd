@@ -52,18 +52,12 @@ class App extends Component {
                 })
                 return;
             })
-            .then(()=>console.log(this.state))
         }
         recursePages([],resource);
     }
 
-    onFilmClick(film) {
-        console.log('onFilmClick', film.target);
-        
-    }
-
     render() {
-        return <div><SimpleSlider films={this.state.films} people={this.state.people} species={this.state.species} onClick={this.onFilmClick.bind(this)}/></div>
+        return <div><SimpleSlider films={this.state.films} people={this.state.people} species={this.state.species} /></div>
     }
 };
 
