@@ -1,23 +1,33 @@
 body {
-    /* background-image: url("https://s3-us-west-2.amazonaws.com/swapichallenge/starwarsBackground.jpg"); */
-    background: #808080;
+    background-image: url("https://s3-us-west-2.amazonaws.com/swapichallenge/starwarsBackground.jpg");
+    /* background: #808080; */
 }
 
 .slick-current {
     transform: scale(1.5);
-
 }
 
 .slick-slide {
     text-align: center;
-    background-color: green;
-    border-color: red;
+    background-color: grey;
+    border-color: darkslategrey;
     border-style: solid;
-    /* border-width: 5px; */
-
+    
+    height: 100px;
 }
 
 .slick-track {
-    padding-top:75px;
-    /* width: 500px; */
+    margin-top:100px;
 }
+
+button {
+    text-align: center;
+    background-color: grey;
+    border-color: darkslategrey;
+    border-style: solid;
+    border-radius: 50px;
+}
+
+/* h3 {
+    height: inherit;
+} */
